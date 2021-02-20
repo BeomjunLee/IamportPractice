@@ -1,4 +1,4 @@
-## 아임포트 결제서비스 연동
+## 아임포트 결제서비스 연동(ex 카카오페이)
 
 ### 1. 회원가입 하기
 <img src="https://user-images.githubusercontent.com/69130921/108605757-92b02380-73f9-11eb-9cc4-c8b5113a7286.PNG">
