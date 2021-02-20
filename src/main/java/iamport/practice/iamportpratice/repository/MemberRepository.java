@@ -1,2 +1,4 @@
-package iamport.practice.iamportpratice.repository;public interface MemberRepository {
+package iamport.practice.iamportpratice.repository;
+
+public interface MemberRepository {
 }
