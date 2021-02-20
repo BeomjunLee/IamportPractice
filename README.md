@@ -5,3 +5,9 @@
 
 ### 2. 사용할 PG사 선택후 저장
 <img src="https://user-images.githubusercontent.com/69130921/108605799-d571fb80-73f9-11eb-8c82-2ab3709ce7c9.png">
+
+### 3. 아임포트 라이브러리 추가
+~~~
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+~~~
