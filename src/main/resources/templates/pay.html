@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+</head>
+<body>
+<script th:inline="javascript">
+        var IMP = window.IMP; // 생략해도 괜찮습니다.
+        IMP.init("imp60320578"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+        // IMP.request_pay(param, callback) 호출
+        var order = [[${order}]]
+        IMP.request_pay({ // param
+            pg: "html5_inicis",
+            pay_method: "card",
+            merchant_uid: order.id, //주문 번호
+            name: order.item,       //상품명
+            amount: order.price,    //가격
+            buyer_email: "gildong@gmail.com",
+            buyer_name: order.name, //주문자
+            buyer_tel: "010-4242-4242",
+            buyer_addr: "서울특별시 강남구 신사동",
+            buyer_postcode: "01181"
+        }, function (rsp) { // callback
+            if (rsp.success) { // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+                // jQuery로 HTTP 요청
+                jQuery.ajax({
+                    url: "localhost:8080/payComp", // 가맹점 서버
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    data: {
+                        imp_uid: rsp.imp_uid,
+                        merchant_uid: rsp.merchant_uid
+                    }
+                }).done(function (data) {
+                    // 가맹점 서버 결제 API 성공시 로직
+                })
+            } else {
+                alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+                // jQuery로 HTTP 요청
+                jQuery.ajax({
+                    url: "localhost:8080/deletePay", // 가맹점 서버
+                    method: "POST",
+                    data: {
+                        id: order.id
+                    }
+                }).done(function (data) {
+                    // 가맹점 서버 결제 API 성공시 로직
+                })
+            }
+        });
+</script>
+</body>
+</html>

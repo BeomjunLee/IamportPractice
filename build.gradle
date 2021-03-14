@@ -22,6 +22,9 @@ dependencies {
     //jpa query log
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7'
 
+    //json
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.1'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
