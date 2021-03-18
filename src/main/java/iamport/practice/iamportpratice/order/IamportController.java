@@ -54,10 +54,11 @@ public class IamportController {
     public String completePay(@RequestBody EndPointDto dto) {
         return "";
     }
-    public String getToken(HttpServletRequest request){
 
-        String token;
-
-        return token;
-    }
+//    public String getToken(HttpServletRequest request){
+//
+//        String token;
+//
+//        return token;
+//    }
 }
